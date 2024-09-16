@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.LinkedList;
+import java.util.Hashtable;
 public class Utilerías1 {
     public static void MenuPrincipal(Scanner scanner){
         MenuAccesoBanco(scanner);
@@ -30,12 +31,12 @@ public class Utilerías1 {
     }
     public static void InicioSesión(Scanner scanner){
         //La parte de los admins se puede hacer con una hashtable
-        String CorreoAdmin="alanvilchis";
-        double ContraseñaAdmin=1;
-        String CorreoAdmin2="alexander";
-        double Contraseñaadmin2=69;
-        String CorreoAdmin3="Barandon";
-        double ContraseñaAdmin3=1234;
+        Hashtable<String,String> CuentasAdministradores=new Hashtable<String, String>();
+        CuentasAdministradores.put("alanvilchis","1");
+        CuentasAdministradores.put("alexander","69");
+        CuentasAdministradores.put("Brandon","1234");
+        
+        
 
         System.out.println("Ingrese su correo:");
         String correo=scanner.nextLine();
@@ -43,12 +44,11 @@ public class Utilerías1 {
         System.out.println("Ingrese su contraseña:");
         String Contraseña=scanner.nextLine();
         scanner.nextLine();
-        if((correo.equals(CorreoAdmin))&&(Contraseña.equals(CorreoAdmin))){
+        if((CuentasAdministradores.containsKey(correo))&&(CuentasAdministradores.containsValue(Contraseña))){
             System.out.println("Bienvenido Administrador.");
         }else{
-            System.out.println("Bienvenido Usuario.");
+            System.out.println("Cuenta incorrecta");
         }
-
     }
     public static LinkedList<Double> crearTarjetaDeDebito(){
         return new LinkedList<>();
