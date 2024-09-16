@@ -1,4 +1,6 @@
 import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 public class Cliente {
@@ -10,6 +12,7 @@ public class Cliente {
     private String direccion;
     private String telefono;
     private String correo;
+
     //LinkedList<Double>[] tarjetas;
     //Constructor
     public Cliente(int numeroDeCuenta, String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
@@ -41,7 +44,7 @@ public class Cliente {
         return telefono;
     }
     public String getcorreo(){
-        return telefono;
+        return correo;
     }
     //setters:
     public void setnumeroDecuenta(int numeroDeCuenta){
@@ -76,32 +79,36 @@ public class Cliente {
     //métodos del cliente.
     public static Cliente CrearNuevoUsuario(int numeroDeCuenta, String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
         Cliente cliente=new Cliente(numeroDeCuenta, fechaDeNacimiento, nombre, apellido, Direccion, telefono, correo);
+        clientesCreados++;
         return cliente;
     }
     public static void IngreseDeDatos(Scanner scanner,Banco banco){
-        System.out.println("Ingrese el numero de cuenta del cliente:");
-        int num=scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Ingrese la fecha de nacimiento con el siguiente formato: 15/07/2005 (dd/mm/aaaa)");
-        String fecha=scanner.nextLine();
-        scanner.nextLine();
-        System.out.println("Ingrese el nombre(s) del usuario:");
-        String nombres=scanner.nextLine();
-        scanner.nextLine();
-        System.out.println("Ingrese los apellidos del usuario:");
-        String apellidos=scanner.nextLine();
-        scanner.nextLine();
-        System.out.println("Ingrese la Dirección del usuario:");
-        String direccion=scanner.nextLine();
-        scanner.nextLine();
-        System.out.println("Ingrese el teléfono:");
-        String telefonos=scanner.nextLine();
-        scanner.nextLine();
-        System.out.println("Ingrese el correo:");
-        String correo=scanner.nextLine();
-        scanner.nextLine();
+        //do{
+            System.out.println("Ingrese el numero de cuenta del cliente:");
+            int num=scanner.nextInt();
+            scanner.nextLine();
+            System.out.println("Ingrese la fecha de nacimiento con el siguiente formato: 15/07/2005 (dd/mm/aaaa)");
+            String fecha=scanner.nextLine();
+            scanner.nextLine();
+            System.out.println("Ingrese el nombre(s) del usuario:");
+            String nombres=scanner.nextLine();
+            scanner.nextLine();
+            System.out.println("Ingrese los apellidos del usuario:");
+            String apellidos=scanner.nextLine();
+            scanner.nextLine();
+            System.out.println("Ingrese la Dirección del usuario:");
+            String direccion=scanner.nextLine();
+            scanner.nextLine();
+            System.out.println("Ingrese el teléfono:");
+            String telefonos=scanner.nextLine();
+            scanner.nextLine();
+            System.out.println("Ingrese el correo:");
+            String correo=scanner.nextLine();
+            scanner.nextLine();
+        //}while(num,fecha,nombres,apellidos,direccion,telefonos,correo!="");
         
         banco.AgregarCliente(CrearNuevoUsuario(num, fecha, nombres, apellidos, direccion, telefonos, correo));
     }
+    
 }
 
