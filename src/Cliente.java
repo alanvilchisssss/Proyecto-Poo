@@ -1,7 +1,3 @@
-import java.util.LinkedList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 public class Cliente {
     static int clientesCreados=0;

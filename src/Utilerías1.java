@@ -1,7 +1,5 @@
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.LinkedList;
-import java.util.ArrayList;
 import java.util.Hashtable;
 public class Utilerías1 {
     public static void MenuAccesoBanco(Scanner scanner){
