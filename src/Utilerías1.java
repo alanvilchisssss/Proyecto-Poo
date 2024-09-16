@@ -3,10 +3,8 @@ import java.util.Scanner;
 import java.util.LinkedList;
 import java.util.Hashtable;
 public class Utilerías1 {
-    public static void MenuPrincipal(Scanner scanner){
-        MenuAccesoBanco(scanner);
-    }
     public static void MenuAccesoBanco(Scanner scanner){
+        Banco banco=new Banco();
         System.out.println("Bienvenido al Sistema Bancario PumaDolarFI");
         System.out.println("Opciones del sistema:");
         System.out.println("1.-Crear Nueva Cuenta");//Le tenemos que preguntar al usuario que tipo de cuenta. 

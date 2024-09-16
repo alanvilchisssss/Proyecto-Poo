@@ -78,7 +78,7 @@ public class Cliente {
         Cliente cliente=new Cliente(numeroDeCuenta, fechaDeNacimiento, nombre, apellido, Direccion, telefono, correo);
         return cliente;
     }
-    public static void IngreseDeDatos(Scanner scanner){
+    public static void IngreseDeDatos(Scanner scanner,Banco banco){
         System.out.println("Ingrese el numero de cuenta del cliente:");
         int num=scanner.nextInt();
         scanner.nextLine();
@@ -100,7 +100,8 @@ public class Cliente {
         System.out.println("Ingrese el correo:");
         String correo=scanner.nextLine();
         scanner.nextLine();
-        CrearNuevoUsuario(num, fecha, nombres, apellidos, direccion, telefonos, correo);
+        
+        banco.AgregarCliente(CrearNuevoUsuario(num, fecha, nombres, apellidos, direccion, telefonos, correo));
     }
 }
 
