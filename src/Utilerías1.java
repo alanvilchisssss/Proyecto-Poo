@@ -9,24 +9,34 @@ public class Utilerías1 {
     public static void MenuAccesoBanco(Scanner scanner){
         System.out.println("Bienvenido al Sistema Bancario PumaDolarFI");
         System.out.println("Opciones del sistema:");
-        System.out.println("1.-Iniciar sesión.");
-        System.out.println("2.- Crear nuevo usuario.");
-        System.out.println("3.- Salir.");
+        System.out.println("1.-Crear Nueva Cuenta");//Le tenemos que preguntar al usuario que tipo de cuenta. 
+        System.out.println("2.- Ingresar dinero a la cuenta principal.");
+        System.out.println("3.- Retirar dinero de la cuenta principal.");
+        System.out.println("4.- Agregar un nuevo cliente al banco PumaDolarFI");
+        System.out.println("5.- Agregar alguna tarjeta de crédito.");
+        System.out.println("6.- Salir.");
         System.out.println("Para acceder a la opción escriba en minúsculas la opción.");
-        String option = scanner.nextLine();
+        int option = scanner.nextInt();
         scanner.nextLine();
         switch(option){
-            case "iniciar sesión"->{
-                //aquí va el método de iniciar sesión
-                InicioSesión(scanner);
+            case 1->{
+
             }
-            case "crear nuevo usuario"->{
-                //aquí va el método de Crear un nuevo usuario
+            case 2->{
+
             }
-            case "salir"->{
+            case 3->{
+
+            }
+            case 4->{
+
+            }
+            case 5->{
                 //Salida del programa.
+                System.out.println("Salida del sistema Bancario.");
                 System.exit(0);
             }
+            default-> System.out.println("Ingrese una opción correcta.");
         }
     }
     public static void InicioSesión(Scanner scanner){
@@ -36,8 +46,6 @@ public class Utilerías1 {
         CuentasAdministradores.put("alexander","69");
         CuentasAdministradores.put("Brandon","1234");
         
-        
-
         System.out.println("Ingrese su correo:");
         String correo=scanner.nextLine();
         scanner.nextLine();
@@ -46,6 +54,7 @@ public class Utilerías1 {
         scanner.nextLine();
         if((CuentasAdministradores.containsKey(correo))&&(CuentasAdministradores.containsValue(Contraseña))){
             System.out.println("Bienvenido Administrador.");
+            MenuAccesoBanco(scanner);
         }else{
             System.out.println("Cuenta incorrecta");
         }
