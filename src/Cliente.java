@@ -8,8 +8,11 @@ public class Cliente {
     private String direccion;
     private String telefono;
     private String correo;
+    //private TarjetaDeCrédito tarjetaDeCrédito;
+    //private TarjetaDeCrédito tarjetaDeCrédito2;
+    //private CuentaBásica cuenta;
+    //private CuentaDeAhorro CuentaDeAhorro;
 
-    //LinkedList<Double>[] tarjetas;
     //Constructor
     public Cliente(int numeroDeCuenta, String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
         this.numeroDeCuenta=numeroDeCuenta;
