@@ -7,19 +7,18 @@ public class Utilerías1 {
         int opcion=0;
         do{
             System.out.println("Opciones del sistema:");
-            System.out.println("1.-Crear Nueva Cuenta afiliada al cliente.");//Le tenemos que preguntar al usuario que tipo de cuenta. 
+            System.out.println("1.-Crear nuevo cliente con nueva cuenta afiliada.");//Le tenemos que preguntar al usuario que tipo de cuenta. 
             System.out.println("2.- Ingresar dinero a la cuenta principal.");
             System.out.println("3.- Retirar dinero de la cuenta principal.");
-            System.out.println("4.- Agregar un nuevo cliente al banco PumaDolarFI");
-            System.out.println("5.- Agregar alguna tarjeta de crédito.");
-            System.out.println("6.-Datos de clientes actuales");
+            System.out.println("4.- Agregar alguna tarjeta de crédito.");
+            System.out.println("5.-Datos de clientes actuales");
+            System.out.println("6.- Agregar una nueva cuenta bancaria a algún usuario.");
             System.out.println("7.- Salir.");
-            System.out.println("Para acceder a la opción escriba en minúsculas la opción.");
             opcion = scanner.nextInt();
             scanner.nextLine();
             switch(opcion){
                 case 1->{
-
+                    Cliente.IngreseDeDatos(scanner, banco);
                 }
                 case 2->{
 
@@ -28,13 +27,29 @@ public class Utilerías1 {
 
                 }
                 case 4->{
-                    Cliente.IngreseDeDatos(scanner, banco);
+                    //Tiene que ser algo como lo del banco.agregarCliente()
+                    //en la clase de las tarjetas de crédito agrega un método para poder agregar a una lista la tarjeta de crédito
                 }
                 case 5->{
-
+                    int opcionn=0;
+                    System.out.println("¿Desea imprimir 1)todos los clientes o 2)alguno en específico? 3)Imprimir cliente y datos de cuentas bancarias.");
+                    opcionn=scanner.nextInt();
+                    scanner.nextLine();
+                        switch (opcionn) {
+                            case 1->{
+                                Banco.ImprimirClientes(banco.getList());
+                            }
+                            case 2->{
+                                Banco.ImprimirSoloCliente(banco.getList(), scanner);
+                            }
+                            case 3->{
+                                Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
+                            }
+                            default->System.out.println("Ingrese una opción correcta");
+                        }
                 }
                 case 6->{
-                    Banco.ImprimirClientes(banco.getList());
+                    CuentaDeAhorro.TiposDeCuentas(scanner, banco.getList());
                 }
                 case 7->{
                     //Salida del programa.
@@ -46,12 +61,12 @@ public class Utilerías1 {
         }while(opcion!=7);
     }
     public static void InicioSesión(Scanner scanner){
-        //La parte de los admins se puede hacer con una hashtable
         int contador=0;
         Hashtable<String,String> CuentasAdministradores=new Hashtable<String, String>();
         CuentasAdministradores.put("alanvilchis","1");
         CuentasAdministradores.put("alexander","69");
         CuentasAdministradores.put("Brandon","1234");
+        CuentasAdministradores.put("Profesor","Poo");
         do{
         System.out.println("Bienvenido al Sistema Bancario PumaDolarFI");
             System.out.println("Ingrese su correo:");
@@ -68,7 +83,7 @@ public class Utilerías1 {
                 contador++;
             }
         }while(contador<4);
-        if(contador==3){
+        if(contador==4){
             System.out.println("Sistema Bloqueado.");
         }
     }
