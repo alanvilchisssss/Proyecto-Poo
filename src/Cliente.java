@@ -9,10 +9,9 @@ public class Cliente {
     private String direccion;
     private String telefono;
     private String correo;
-    //private TarjetaDeCrédito tarjetaDeCrédito;
-    //private TarjetaDeCrédito tarjetaDeCrédito2;
+    //private ArrayList<TarjetaDeCrédito> tarjetasDeCrédito;
     private ArrayList<CuentaDeAhorro> Listacuenta;
-    //private CuentaDeAhorro CuentaDeAhorro;
+    //private ArrayList<CuentaDeAhorro> CuentaDeAhorro;
 
     //Constructor
     public Cliente(int numeroDeCuenta, String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){

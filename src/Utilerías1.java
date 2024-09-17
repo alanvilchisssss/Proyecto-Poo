@@ -2,8 +2,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Hashtable;
 public class Utilerías1 {
-    public static void MenuAccesoBanco(Scanner scanner){
-        Banco banco=new Banco();
+    public static void MenuAccesoBanco(Scanner scanner, Banco banco){
         int opcion=0;
         do{
             System.out.println("Opciones del sistema:");
@@ -11,9 +10,10 @@ public class Utilerías1 {
             System.out.println("2.- Ingresar dinero a la cuenta principal.");
             System.out.println("3.- Retirar dinero de la cuenta principal.");
             System.out.println("4.- Agregar alguna tarjeta de crédito.");
-            System.out.println("5.-Datos de clientes actuales");
+            System.out.println("5.- Datos de clientes actuales");
             System.out.println("6.- Agregar una nueva cuenta bancaria a algún usuario.");
-            System.out.println("7.- Salir.");
+            System.out.println("7.- Modificar algún dato del usuario");
+            System.out.println("8.- Salir.");
             opcion = scanner.nextInt();
             scanner.nextLine();
             switch(opcion){
@@ -49,18 +49,30 @@ public class Utilerías1 {
                         }
                 }
                 case 6->{
-                    CuentaDeAhorro.TiposDeCuentas(scanner, banco.getList());
+                    if(banco.getList().isEmpty()){
+                        System.out.println("La lista está vacía");
+                    }else{
+                        CuentaDeAhorro.TiposDeCuentas(scanner, banco.getList());
+                    }
                 }
                 case 7->{
+                    if(banco.getList().isEmpty()){
+                        System.out.println("La lista está vacía");
+                    }else{
+                        Banco.ModificarAlgunDato(banco.getList(), scanner);
+                    }
+                }
+                case 8->{
                     //Salida del programa.
                     System.out.println("Salida del sistema Bancario.");
                     System.exit(0);
                 }
                 default-> System.out.println("Ingrese una opción correcta.");
             }
-        }while(opcion!=7);
+        }while(opcion!=8);
     }
     public static void InicioSesión(Scanner scanner){
+        Banco banco=new Banco();
         int contador=0;
         Hashtable<String,String> CuentasAdministradores=new Hashtable<String, String>();
         CuentasAdministradores.put("alanvilchis","1");
@@ -68,7 +80,7 @@ public class Utilerías1 {
         CuentasAdministradores.put("Brandon","1234");
         CuentasAdministradores.put("Profesor","Poo");
         do{
-        System.out.println("Bienvenido al Sistema Bancario PumaDolarFI");
+        System.out.println("Bienvenido al Sistema Bancario "+banco.getnombre());
             System.out.println("Ingrese su correo:");
             String correo=scanner.nextLine();
             scanner.nextLine();
@@ -77,7 +89,7 @@ public class Utilerías1 {
             scanner.nextLine();
             if((CuentasAdministradores.containsKey(correo))&&(CuentasAdministradores.containsValue(Contraseña))){
                 System.out.println("Bienvenido Administrador.");
-                MenuAccesoBanco(scanner);
+                MenuAccesoBanco(scanner,banco);
             }else{
                 System.out.println("Cuenta incorrecta");
                 contador++;
