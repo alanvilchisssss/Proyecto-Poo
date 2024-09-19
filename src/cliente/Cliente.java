@@ -80,6 +80,7 @@ public class Cliente {
         } while (aux == -1);
 
         cuentaDeInversion.obtenerInversion(cuentasDeAhorros.get(aux));
+        cuentasDeInversion.remove(cuentaDeInversion);
     }
 
     private int buscarIndiceDeLaCuenta(String numeroDeCuenta) {
