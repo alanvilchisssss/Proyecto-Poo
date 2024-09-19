@@ -21,11 +21,11 @@ public class Utilerías1 {
                     Cliente.IngreseDeDatos(scanner, banco);
                 }
                 case 2->{
-
+                    CuentaDeAhorro.Agregardinero(banco, scanner);
                 }
                 case 3->{
-
-                }
+                    CuentaDeAhorro.RetirarDinero(banco, scanner);
+                }   
                 case 4->{
                     //Tiene que ser algo como lo del banco.agregarCliente()
                     //en la clase de las tarjetas de crédito agrega un método para poder agregar a una lista la tarjeta de crédito

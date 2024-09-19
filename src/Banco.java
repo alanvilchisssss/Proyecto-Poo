@@ -60,9 +60,9 @@ public class Banco {
     public static void ModificarAlgunDato(ArrayList<Cliente> ListaCliente, Scanner scanner){
         int opcion=0;
         System.out.println("Ingrese el índice del cliente que desea sus datos:");
+        ImprimirClientes(ListaCliente);
         int index=scanner.nextInt();
         scanner.nextLine();
-            
             System.out.println("¿Qué desea modificar?");
             System.out.println("1. Fecha de nacimiento");
             System.out.println("2. nombres iniciales");
