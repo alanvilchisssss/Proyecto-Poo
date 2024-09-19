@@ -56,7 +56,7 @@ public class Cliente {
         cuentasDeInversion.add(new CuentaDeInversion(cuentaDeAhorro.retirarDinero(inversion), rendimiento, plazo, isInSeconds));
     }
 
-    public void ingresarFondos(String numeroDeCuenta){
+    public void ingresarFondosACuentaDeAhorros(String numeroDeCuenta){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el saldo");
         double saldo = sc.nextDouble();
