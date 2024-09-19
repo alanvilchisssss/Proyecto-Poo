@@ -75,11 +75,15 @@ public class CuentaDeAhorro {
         int opcion=0;
         opcion=scanner.nextInt();
         scanner.nextLine();
+        System.out.println("De que cuenta bancaria?");
+        int cuenta=0;
+        cuenta=scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Cuánto dinero desea retirar de su cuenta?");
         int dinero=0;
         dinero=scanner.nextInt();
         scanner.nextLine();
-        banco.getList().get(opcion-1).getCuenta().get(0).retirarDinero(dinero);
+        banco.getList().get(opcion-1).getCuenta().get(cuenta-1).retirarDinero(dinero);
     
     }
     public static int NumerosDeCuentaRandom(){
