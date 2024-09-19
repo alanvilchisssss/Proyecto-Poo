@@ -1,37 +1,72 @@
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+package cuentas;
+
+import java.util.HashSet;
+
+import utils.RandNum;
+
 public class CuentaDeAhorro {
-    private int numeroDeCuenta=NumerosDeCuentaRandom();
-    private int saldo=0;
-    public CuentaDeAhorro(int saldo){//se recibirá saldo para tener un monto inicial en la cuenta.
-        this.saldo=saldo;
-    }   
-    //getters
-    public int getnumeroDecuenta(){
-        return numeroDeCuenta;
-    }
-    public int getSaldo(){
-        return saldo;
-    }
-    //setters:
-    public void setnumeroDecuenta(int numeroDeCuenta){
-        this.numeroDeCuenta=numeroDeCuenta;
-    }
-    public void setsaldo(int saldo){
-        this.saldo=saldo;
-    }
-    public void sumaDeDinero(int dinero){
-        this.saldo+=dinero;
-    }
-    public void retirarDinero(int dinero){
-        if(dinero>this.saldo){
-            System.out.println("Saldo insuficiente");
-        }else{
-            this.saldo-=dinero;
+    private final static HashSet<String> numeroDeCuentaSet = new HashSet<String>();
+    private final String numeroDeCuenta;
+    private double saldo = 0;
+
+
+    public CuentaDeAhorro(double saldo) { //constructor
+        String aux;
+
+        while(true) {
+            aux = RandNum.randNum(8, "1");
+
+            if(!numeroDeCuentaSet.contains(aux)){
+                numeroDeCuentaSet.add(aux);
+                break;
+            }
+
         }
+
+        this.numeroDeCuenta = aux;
+        this.saldo = saldo;
     }
+
+
+
+    //getters
+    public String getNumeroDeCuenta(){
+        return this.numeroDeCuenta;
+    }
+
+    public double getSaldo(){
+        return this.saldo;
+    }
+
+    //setters
+    public void setSaldo(double saldo){
+        this.saldo=saldo;
+    }
+
     //métodos
+    public void ingresarDinero(double dinero){
+        this.saldo += dinero;
+    }
+
+    public double retirarDinero(double retiro){
+        if(retiro>this.saldo)
+            System.out.println("Saldo insuficiente");
+        else//retiro exitoso
+            this.saldo-=retiro;
+
+        return retiro;
+    }
+
+    public void realizarTransferencia(CuentaDeAhorro cuentaDestino, double dineroATransferir){
+        if(this.saldo<dineroATransferir)
+            System.out.println("Saldo insuficiente");
+        else
+            cuentaDestino.ingresarDinero(this.retirarDinero(dineroATransferir));
+    }
+
+
+
+    /*
     public static void TiposDeCuentas(Scanner scanner,ArrayList<Cliente> ListaCliente){//este método se utiliza creando a un nuevo cliente, siguiendo la lógica de que si se va a crear un nuevo usuario del banco, también se debe de crear una cuenta
         System.out.println("¿Que tipo de cuenta desea crear, 1)de ahorro o de 2)inversión?");
         int opcion=scanner.nextInt();
@@ -49,7 +84,7 @@ public class CuentaDeAhorro {
                 ListaCliente.get(index-1).AgregarCuenta(cuenta);
             }
             case 2->{
-                //aquí va el método para crear cuenta de inversión
+                //aquí va el metodo para crear una cuenta de inversion
             }
         }
     }
@@ -91,4 +126,9 @@ public class CuentaDeAhorro {
         int numero=random.nextInt(0,999999999);
         return numero;
     }
+    */
+
+
+
+
 }
