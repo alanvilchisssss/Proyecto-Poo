@@ -67,7 +67,7 @@ public class CuentaDeAhorro {
 
 
     /*
-    public static void TiposDeCuentas(Scanner scanner,ArrayList<Cliente> ListaCliente){//este método se utiliza creando a un nuevo cliente, siguiendo la lógica de que si se va a crear un nuevo usuario del banco, también se debe de crear una cuenta
+    public static void TiposDeCuentas(Scanner scanner,ArrayList<cliente.Cliente> ListaCliente){//este método se utiliza creando a un nuevo cliente, siguiendo la lógica de que si se va a crear un nuevo usuario del banco, también se debe de crear una cuenta
         System.out.println("¿Que tipo de cuenta desea crear, 1)de ahorro o de 2)inversión?");
         int opcion=scanner.nextInt();
         scanner.nextLine();
