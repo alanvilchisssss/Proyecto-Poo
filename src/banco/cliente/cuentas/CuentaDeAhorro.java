@@ -1,4 +1,4 @@
-package cuentas;
+package banco.cliente.cuentas;
 
 import java.util.HashSet;
 
@@ -66,8 +66,8 @@ public class CuentaDeAhorro {
 
 
 
-    /*
-    public static void TiposDeCuentas(Scanner scanner,ArrayList<cliente.Cliente> ListaCliente){//este método se utiliza creando a un nuevo cliente, siguiendo la lógica de que si se va a crear un nuevo usuario del banco, también se debe de crear una cuenta
+
+    public static void TiposDeCuentas(Scanner scanner,ArrayList<banco.cliente.Cliente> ListaCliente){//este método se utiliza creando a un nuevo banco.cliente, siguiendo la lógica de que si se va a crear un nuevo usuario del banco, también se debe de crear una cuenta
         System.out.println("¿Que tipo de cuenta desea crear, 1)de ahorro o de 2)inversión?");
         int opcion=scanner.nextInt();
         scanner.nextLine();
@@ -77,8 +77,8 @@ public class CuentaDeAhorro {
         switch(opcion){
             case 1->{
                 CuentaDeAhorro cuenta=new CuentaDeAhorro(saldo);
-                System.out.println("¿A que cliente desea asociar esta cuenta?(Ingrese un índice)");
-                Banco.ImprimirClientes(ListaCliente);
+                System.out.println("¿A que banco.cliente desea asociar esta cuenta?(Ingrese un índice)");
+                banco.Banco.ImprimirClientes(ListaCliente);
                 int index=scanner.nextInt();
                 scanner.nextLine();
                 ListaCliente.get(index-1).AgregarCuenta(cuenta);
@@ -88,8 +88,8 @@ public class CuentaDeAhorro {
             }
         }
     }
-    public static void Agregardinero(Banco banco, Scanner scanner){
-        Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
+    public static void Agregardinero(banco.Banco banco, Scanner scanner){
+        banco.Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
         System.out.println("de que usuario desea agregar dinero?");
         int opcion=0;
         opcion=scanner.nextInt();
@@ -104,8 +104,8 @@ public class CuentaDeAhorro {
         scanner.nextLine();
         banco.getList().get(opcion-1).getCuenta().get(cuenta-1).sumaDeDinero(dinero);
     }
-    public static void RetirarDinero(Banco banco, Scanner scanner){
-        Banco.ImprimirSoloCliente(banco.getList(), scanner);
+    public static void RetirarDinero(banco.Banco banco, Scanner scanner){
+        banco.Banco.ImprimirSoloCliente(banco.getList(), scanner);
         System.out.println("de que usuario desea agregar dinero?");
         int opcion=0;
         opcion=scanner.nextInt();

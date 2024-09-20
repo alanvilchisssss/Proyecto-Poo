@@ -1,5 +1,7 @@
-import cliente.Cliente;
-import cuentas.CuentaDeAhorro;
+package banco;
+
+import banco.cliente.Cliente;
+import banco.cliente.cuentas.CuentaDeAhorro;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -50,7 +52,7 @@ public class Banco {
         if(ListaCliente.isEmpty()){
             System.out.println("La lista de clientes está vacía");
         }else{
-            System.out.println("Ingrese el índice del cliente que desea sus datos:");
+            System.out.println("Ingrese el índice del banco.cliente que desea sus datos:");
             int index=scanner.nextInt();
             scanner.nextLine();
             System.out.println("usuario "+index+"\tnumero de cuenta: "+ListaCliente.get(index-1).getnumeroDecuenta()+"\tFecha De Nacimiento:"+ListaCliente.get(index-1).getfechaDeNacimiento()+"\tNombre:"+ListaCliente.get(index-1).getnombre()+" "+ListaCliente.get(index-1).getapellidos()+"\t Dirección:"+ListaCliente.get(index-1).getdireccion()+"\t Telefono:"+ListaCliente.get(index-1).getelefono()+"\n Correo: "+ListaCliente.get(index-1).getcorreo());
@@ -62,7 +64,7 @@ public class Banco {
     }
     public static void ModificarAlgunDato(ArrayList<Cliente> ListaCliente, Scanner scanner){
         int opcion=0;
-        System.out.println("Ingrese el índice del cliente que desea sus datos:");
+        System.out.println("Ingrese el índice del banco.cliente que desea sus datos:");
         ImprimirClientes(ListaCliente);
         int index=scanner.nextInt();
         scanner.nextLine();

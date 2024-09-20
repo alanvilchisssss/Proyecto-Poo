@@ -1,5 +1,8 @@
-import cliente.Cliente;
-import cuentas.CuentaDeAhorro;
+package utils;
+
+import banco.*;
+import banco.cliente.*;
+import banco.cliente.cuentas.*;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -9,7 +12,7 @@ public class Utilerías1 {
         int opcion=0;
         do{
             System.out.println("Opciones del sistema:");
-            System.out.println("1.-Crear nuevo cliente con nueva cuenta afiliada.");//Le tenemos que preguntar al usuario que tipo de cuenta. 
+            System.out.println("1.-Crear nuevo banco.cliente con nueva cuenta afiliada.");//Le tenemos que preguntar al usuario que tipo de cuenta.
             System.out.println("2.- Ingresar dinero a la cuenta principal.");
             System.out.println("3.- Retirar dinero de la cuenta principal.");
             System.out.println("4.- Agregar alguna tarjeta de crédito.");
@@ -35,7 +38,7 @@ public class Utilerías1 {
                 }
                 case 5->{
                     int opcionn=0;
-                    System.out.println("¿Desea imprimir 1)todos los clientes o 2)alguno en específico? 3)Imprimir cliente y datos de cuentas bancarias.");
+                    System.out.println("¿Desea imprimir 1)todos los clientes o 2)alguno en específico? 3)Imprimir banco.cliente y datos de banco.cliente.cuentas bancarias.");
                     opcionn=scanner.nextInt();
                     scanner.nextLine();
                         switch (opcionn) {

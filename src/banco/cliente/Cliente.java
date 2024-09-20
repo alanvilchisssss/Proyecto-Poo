@@ -1,6 +1,6 @@
-package cliente;
+package banco.cliente;
 
-import cuentas.*;
+import banco.cliente.cuentas.*;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -76,7 +76,7 @@ public class Cliente {
 
 
             if(depth > 1) {
-                System.out.println("1.- Imprimir numeros de cuenta del cliente");
+                System.out.println("1.- Imprimir numeros de cuenta del banco.cliente");
                 System.out.println("Otro.- Reintentar ingresar ");
                 if(sc.nextInt()==1)
                     imprimirNumerosDeCuenta();

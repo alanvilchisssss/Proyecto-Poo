@@ -1,4 +1,4 @@
-package cuentas;
+package banco.cliente.cuentas;
 
 import java.util.HashSet;
 import java.time.LocalTime;
