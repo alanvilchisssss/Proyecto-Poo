@@ -10,7 +10,7 @@ import bancario.*;
 public class Utilerías1 {
     public static void MenuAccesoBanco(Scanner scanner, Banco banco){
         int opcion=0;
-        do{
+        while(true){
             System.out.println("Opciones del sistema:");
             System.out.println("1.-Crear nuevo cliente con nueva cuenta afiliada.");//Le tenemos que preguntar al usuario que tipo de cuenta. 
             System.out.println("2.- Ingresar dinero a la cuenta principal.");
@@ -82,8 +82,10 @@ public class Utilerías1 {
 
                 default-> System.out.println("Ingrese una opción correcta.");
             }
-        }while(opcion!=8);
+        }
     }
+
+
     public static void InicioSesión(Scanner scanner){
         Banco banco=new Banco();
         int contador=0;

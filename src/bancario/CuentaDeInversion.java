@@ -30,11 +30,13 @@ public class CuentaDeInversion {
     public int getPlazo(){return this.plazo;}
 
     //metodos
-    public void obtenerInversion(CuentaDeAhorro cuenta) {
+    public double obtenerInversion() {
         if (this.fechaDeSalida.isBefore(LocalTime.now()))
-            cuenta.ingresarDinero(this.retornoDeInversion + this.saldo);
+            return (this.retornoDeInversion + this.saldo);
         else
             System.out.println("No se ha cumplido el plazo de inversión");
+
+        return 0;
     }
 
 }

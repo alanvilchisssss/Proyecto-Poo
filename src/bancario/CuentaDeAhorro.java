@@ -55,8 +55,6 @@ public class CuentaDeAhorro {
                     System.out.println("Error, el cliente no tiene cuenta de ahorro");
                 else if(ListaCliente.get(index - 1).getCuentaAhorro().getSaldo()<saldo)
                     System.out.println("Error, el cliente no tiene fondos suficientes");
-                else if(ListaCliente.get(index - 1).getCuentaInversion() != null)
-                    System.out.println("Error, el cliente ya tiene una cuenta de inversion");
                 else{
                     System.out.println("******************************************************");
                     System.out.println("Seleccione un plazo de inversion");
@@ -72,6 +70,8 @@ public class CuentaDeAhorro {
             }
         }
     }
+
+
     public static void Agregardinero(Banco banco, Scanner scanner){
         Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
         System.out.println("de que usuario desea agregar dinero?");
@@ -94,8 +94,8 @@ public class CuentaDeAhorro {
             return;
         }
 
-        banco.getList().get(opcion-1).getCuentaInversion().obtenerInversion(banco.getList().get(opcion-1).getCuentaAhorro());
-        banco.getList().get(opcion-1).setCuentaDeInversion(null); //eliminar la inversion una vez obtenida
+        banco.getList().get(opcion-1).getCuentaAhorro().ingresarDinero(banco.getList().get(opcion-1).getCuentaInversion().obtenerInversion());
+        banco.getList().get(opcion-1).setCuentaDeInversion(new CuentaDeInversion(0,0,0));
     }
 
     public static void RetirarDinero(Banco banco, Scanner scanner){
