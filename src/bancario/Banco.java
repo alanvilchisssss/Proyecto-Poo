@@ -1,3 +1,5 @@
+package bancario;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Banco {
@@ -36,11 +38,14 @@ public class Banco {
             for(Cliente variable: ListaCliente){
                 System.out.println("usuario "+contador+"\tnumero de cuenta del usuario : "+variable.getnumeroDecuenta()+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
                 contador++;
-                for(CuentaDeAhorro cuenta: variable.getCuenta()){
-                    System.out.println("\tNumero de la cuenta de ahorro: "+cuenta.getnumeroDecuenta()+"\tSaldo:"+cuenta.getSaldo());
+
+                CuentaDeAhorro cuenta = variable.getCuenta();
+                System.out.println("\tCuenta de ahorro: \tSaldo:"+cuenta.getSaldo());
+                if(variable.getCuentaInversion() != null){
+                    System.out.println("\tCuenta de inversion: \tDinero invertido:"+variable.getCuentaInversion().getDineroInvertido());
+                    System.out.println("\tRendimiento: "+variable.getCuentaInversion().getRendimiento()+"\tPlazo de inversion: "+variable.getCuentaInversion().getPlazo());
                 }
             }
-            
         }
     }
     public static void ImprimirSoloCliente(ArrayList<Cliente> ListaCliente, Scanner scanner){
@@ -52,8 +57,11 @@ public class Banco {
             scanner.nextLine();
             System.out.println("usuario "+index+"\tnumero de cuenta: "+ListaCliente.get(index-1).getnumeroDecuenta()+"\tFecha De Nacimiento:"+ListaCliente.get(index-1).getfechaDeNacimiento()+"\tNombre:"+ListaCliente.get(index-1).getnombre()+" "+ListaCliente.get(index-1).getapellidos()+"\t Dirección:"+ListaCliente.get(index-1).getdireccion()+"\t Telefono:"+ListaCliente.get(index-1).getelefono()+"\n Correo: "+ListaCliente.get(index-1).getcorreo());
             System.out.println("Cuentas de ahorro(básicas):");
-            for(CuentaDeAhorro cuenta: ListaCliente.get(index-1).getCuenta()){
-                System.out.println("\tNumero de cuenta: "+cuenta.getnumeroDecuenta()+"\tSaldo:"+cuenta.getSaldo());
+
+            System.out.println("\tCuenta de ahorro: \tSaldo:"+ListaCliente.get(index-1).getCuenta().getSaldo());
+            if(ListaCliente.get(index-1).getCuentaInversion() != null){
+                System.out.println("\tCuenta de inversion: \tDinero invertido:"+ListaCliente.get(index-1).getCuentaInversion().getDineroInvertido());
+                System.out.println("\tRendimiento: "+ListaCliente.get(index-1).getCuentaInversion().getRendimiento()+"\tPlazo de inversion: "+ListaCliente.get(index-1).getCuentaInversion().getPlazo());
             }
         }
     }

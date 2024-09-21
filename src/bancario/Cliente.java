@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+package bancario;
+
 import java.util.Scanner;
 public class Cliente {
     static int clientesCreados=0;
@@ -10,12 +11,15 @@ public class Cliente {
     private String telefono;
     private String correo;
     //private ArrayList<TarjetaDeCrédito> tarjetasDeCrédito;
-    private ArrayList<CuentaDeAhorro> Listacuenta;
-    //private ArrayList<CuentaDeAhorro> CuentaDeAhorro;
+    private CuentaDeAhorro cuentaDeAhorro;
+    private CuentaDeInversion cuentaDeInversion;
+
+
+    //private ArrayList<bancario.CuentaDeAhorro> bancario.CuentaDeAhorro;
 
     //Constructor
     public Cliente(int numeroDeCuenta, String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
-        this.Listacuenta=new ArrayList<>();
+        this.cuentaDeAhorro =new CuentaDeAhorro(0);
         this.numeroDeCuenta=numeroDeCuenta;
         this.fechaDeNacimiento=fechaDeNacimiento;
         this.nombre=nombre;
@@ -47,9 +51,11 @@ public class Cliente {
     public String getcorreo(){
         return correo;
     }
-    public ArrayList<CuentaDeAhorro> getCuenta(){
-        return Listacuenta;
+
+    public CuentaDeAhorro getCuenta(){
+        return cuentaDeAhorro;
     }
+    public CuentaDeInversion getCuentaInversion(){return cuentaDeInversion;}
     //setters:
     public void setnumeroDecuenta(int numeroDeCuenta){
         if(numeroDeCuenta>0){
@@ -81,7 +87,7 @@ public class Cliente {
         this.correo=correo;
     }
     public void AgregarCuenta(CuentaDeAhorro cuenta){
-        Listacuenta.add(cuenta);
+        cuentaDeAhorro = cuenta;
     }
     //métodos del cliente.
     public static Cliente CrearNuevoUsuario(int numeroDeCuenta, String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){

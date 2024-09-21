@@ -1,6 +1,12 @@
+package util;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Hashtable;
+
+
+import bancario.*;
+
 public class Utilerías1 {
     public static void MenuAccesoBanco(Scanner scanner, Banco banco){
         int opcion=0;
@@ -83,11 +89,10 @@ public class Utilerías1 {
         System.out.println("Bienvenido al Sistema Bancario "+banco.getnombre());
             System.out.println("Ingrese su correo:");
             String correo=scanner.nextLine();
-            scanner.nextLine();
             System.out.println("Ingrese su contraseña:");
             String Contraseña=scanner.nextLine();
-            scanner.nextLine();
-            if((CuentasAdministradores.containsKey(correo))&&(CuentasAdministradores.containsValue(Contraseña))){
+
+            if(CuentasAdministradores.get(correo).equals(Contraseña)){
                 System.out.println("Bienvenido Administrador.");
                 MenuAccesoBanco(scanner,banco);
             }else{
