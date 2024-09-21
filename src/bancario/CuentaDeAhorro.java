@@ -43,19 +43,25 @@ public class CuentaDeAhorro {
                 System.out.println("¿A que cliente desea asociar esta cuenta?(Ingrese un índice)");
                 Banco.ImprimirClientes(ListaCliente);
                 int index=scanner.nextInt();
-                if(ListaCliente.get(index-1)!=null){
-                    System.out.println("No puede tener más de una cuenta de ahorro.");
-                }else{
+                if(opcion-1>ListaCliente.size())
+                    System.out.println("El usuario no existe");
+                if(ListaCliente.get(index-1).getCuentaAhorro()==null){
                     ListaCliente.get(index-1).AgregarCuenta(cuenta);
+                }else if(ListaCliente.get(index-1).getCuentaAhorro()!=null){
+                    System.out.println("No puede tener más de una cuenta de ahorro.");
                 }
             }
             case 2-> {
                 System.out.println("¿A que cliente desea abrirle una cuenta de inversion?(Ingrese un índice)");
                 Banco.ImprimirClientes(ListaCliente);
                 int index = scanner.nextInt();
-
+                scanner.nextLine();
+                if(opcion-1>ListaCliente.size())
+                    System.out.println("El usuario no existe");
                 if (ListaCliente.get(index - 1).getCuentaAhorro() == null)
                     System.out.println("Error, el cliente no tiene cuenta de ahorro");
+                if(ListaCliente.get(index-1).getCuentaInversion()!=null)
+                    System.out.println("No puede tener más de una cuenta de inversión en este banco.");
                 else if(ListaCliente.get(index - 1).getCuentaAhorro().getSaldo()<saldo)
                     System.out.println("Error, el cliente no tiene fondos suficientes");
                 else{
@@ -80,11 +86,15 @@ public class CuentaDeAhorro {
         System.out.println("de que usuario desea agregar dinero?");
         int opcion=0;
         opcion=scanner.nextInt();
-        System.out.println("Cuánto dinero desea agregar?");
-        double dinero=0;
-        dinero=scanner.nextDouble();
-        banco.getList().get(opcion-1).getCuentaAhorro().ingresarDinero(dinero);
-    }
+            if(opcion-1>banco.getList().size()){
+                System.out.println("El usuario no existe.");
+            }else{
+                System.out.println("Cuánto dinero desea agregar?");
+                double dinero=0;
+                dinero=scanner.nextDouble();
+                banco.getList().get(opcion-1).getCuentaAhorro().ingresarDinero(dinero);
+            }
+        }
 
     public static void obtenerRetornoDeInversion(Banco banco, Scanner scanner){
         Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
@@ -102,15 +112,19 @@ public class CuentaDeAhorro {
     }
 
     public static void RetirarDinero(Banco banco, Scanner scanner){
-        Banco.ImprimirSoloCliente(banco.getList(), scanner);
+        Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
         System.out.println("de que usuario desea agregar dinero?");
         int opcion=0;
         opcion=scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Cuánto dinero desea retirar de su cuenta?");
-        int dinero=0;
-        dinero=scanner.nextInt();
-        scanner.nextLine();
-        banco.getList().get(opcion-1).getCuentaAhorro().retirarDinero(dinero);
+            if(opcion-1>banco.getList().size()){
+                System.out.println("El usuario no existe.");
+            }else{
+            System.out.println("Cuánto dinero desea retirar de su cuenta?");
+            int dinero=0;
+            dinero=scanner.nextInt();
+            scanner.nextLine();
+            banco.getList().get(opcion-1).getCuentaAhorro().retirarDinero(dinero);
+            }
     }
 }
