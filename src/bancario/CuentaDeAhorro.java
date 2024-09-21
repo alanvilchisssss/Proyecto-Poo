@@ -34,18 +34,20 @@ public class CuentaDeAhorro {
     public static void TiposDeCuentas(Scanner scanner,ArrayList<Cliente> ListaCliente){//este método se utiliza creando a un nuevo cliente, siguiendo la lógica de que si se va a crear un nuevo usuario del banco, también se debe de crear una cuenta
         System.out.println("¿Que tipo de cuenta desea crear, 1)de ahorro o de 2)inversión?");
         int opcion = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("¿Cuánto saldo desea ingresar en la cuenta?");
         double saldo=scanner.nextDouble();
-
+        scanner.nextLine();
         switch(opcion){
             case 1->{
                 CuentaDeAhorro cuenta=new CuentaDeAhorro(saldo);
                 System.out.println("¿A que cliente desea asociar esta cuenta?(Ingrese un índice)");
                 Banco.ImprimirClientes(ListaCliente);
                 int index=scanner.nextInt();
-                if(opcion-1>ListaCliente.size())
-                    System.out.println("El usuario no existe");
-                if(ListaCliente.get(index-1).getCuentaAhorro()==null){
+                scanner.nextLine();
+                if(index-1>ListaCliente.size())
+                    System.out.println("Usuario inexistente.");
+                if(ListaCliente.get(index-1).getCuentaAhorro().getSaldo()==0){
                     ListaCliente.get(index-1).AgregarCuenta(cuenta);
                 }else if(ListaCliente.get(index-1).getCuentaAhorro()!=null){
                     System.out.println("No puede tener más de una cuenta de ahorro.");
