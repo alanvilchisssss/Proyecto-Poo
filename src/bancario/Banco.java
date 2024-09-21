@@ -39,7 +39,7 @@ public class Banco {
                 System.out.println("usuario "+contador+"\tnumero de cuenta del usuario : "+variable.getnumeroDecuenta()+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
                 contador++;
 
-                CuentaDeAhorro cuenta = variable.getCuenta();
+                CuentaDeAhorro cuenta = variable.getCuentaAhorro();
                 System.out.println("\tCuenta de ahorro: \tSaldo:"+cuenta.getSaldo());
                 if(variable.getCuentaInversion() != null){
                     System.out.println("\tCuenta de inversion: \tDinero invertido:"+variable.getCuentaInversion().getDineroInvertido());
@@ -58,7 +58,7 @@ public class Banco {
             System.out.println("usuario "+index+"\tnumero de cuenta: "+ListaCliente.get(index-1).getnumeroDecuenta()+"\tFecha De Nacimiento:"+ListaCliente.get(index-1).getfechaDeNacimiento()+"\tNombre:"+ListaCliente.get(index-1).getnombre()+" "+ListaCliente.get(index-1).getapellidos()+"\t Dirección:"+ListaCliente.get(index-1).getdireccion()+"\t Telefono:"+ListaCliente.get(index-1).getelefono()+"\n Correo: "+ListaCliente.get(index-1).getcorreo());
             System.out.println("Cuentas de ahorro(básicas):");
 
-            System.out.println("\tCuenta de ahorro: \tSaldo:"+ListaCliente.get(index-1).getCuenta().getSaldo());
+            System.out.println("\tCuenta de ahorro: \tSaldo:"+ListaCliente.get(index-1).getCuentaAhorro().getSaldo());
             if(ListaCliente.get(index-1).getCuentaInversion() != null){
                 System.out.println("\tCuenta de inversion: \tDinero invertido:"+ListaCliente.get(index-1).getCuentaInversion().getDineroInvertido());
                 System.out.println("\tRendimiento: "+ListaCliente.get(index-1).getCuentaInversion().getRendimiento()+"\tPlazo de inversion: "+ListaCliente.get(index-1).getCuentaInversion().getPlazo());

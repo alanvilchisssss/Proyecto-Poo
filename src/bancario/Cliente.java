@@ -52,7 +52,7 @@ public class Cliente {
         return correo;
     }
 
-    public CuentaDeAhorro getCuenta(){
+    public CuentaDeAhorro getCuentaAhorro(){
         return cuentaDeAhorro;
     }
     public CuentaDeInversion getCuentaInversion(){return cuentaDeInversion;}
@@ -64,6 +64,9 @@ public class Cliente {
             System.out.println("Dato no válido.");
         }
     }
+
+    public void setCuentaDeInversion(CuentaDeInversion cuentaDeInversion){this.cuentaDeInversion=cuentaDeInversion;}
+
     public void setfechaDeNacimiento(String Fecha){
         if(Fecha.length()==10){
         this.fechaDeNacimiento=Fecha;

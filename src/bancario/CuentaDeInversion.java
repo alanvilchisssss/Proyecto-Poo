@@ -11,14 +11,11 @@ public class CuentaDeInversion {
 
     public CuentaDeInversion(double saldo, int rendimiento, int plazo) {//constructor, si el valor del boolean es true, el plazo es en segundo, de lo contrario en minutos
         this.plazo = plazo;
-
-
         this.fechaDeSalida = LocalTime.now().plusSeconds(plazo);
         this.saldo = saldo;
         this.rendimiento = rendimiento;
         this.retornoDeInversion = (this.rendimiento * saldo) / 100; //entre 100 porque se da el rendimiento en porcentaje
     }
-
 
     //getters
 

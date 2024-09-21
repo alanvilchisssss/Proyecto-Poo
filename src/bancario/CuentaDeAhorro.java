@@ -44,11 +44,31 @@ public class CuentaDeAhorro {
                 System.out.println("¿A que cliente desea asociar esta cuenta?(Ingrese un índice)");
                 Banco.ImprimirClientes(ListaCliente);
                 int index=scanner.nextInt();
-                scanner.nextLine();
                 ListaCliente.get(index-1).AgregarCuenta(cuenta);
             }
-            case 2->{
-                //aquí va el método para crear cuenta de inversión
+            case 2-> {
+                System.out.println("¿A que cliente desea abrirle una cuenta de inversion?(Ingrese un índice)");
+                Banco.ImprimirClientes(ListaCliente);
+                int index = scanner.nextInt();
+
+                if (ListaCliente.get(index - 1).getCuentaAhorro() == null)
+                    System.out.println("Error, el cliente no tiene cuenta de ahorro");
+                else if(ListaCliente.get(index - 1).getCuentaAhorro().getSaldo()<saldo)
+                    System.out.println("Error, el cliente no tiene fondos suficientes");
+                else if(ListaCliente.get(index - 1).getCuentaInversion() != null)
+                    System.out.println("Error, el cliente ya tiene una cuenta de inversion");
+                else{
+                    System.out.println("******************************************************");
+                    System.out.println("Seleccione un plazo de inversion");
+                    System.out.println("1.- Inversion a corto plazo (10 segundos). Retorno 5%");
+                    System.out.println("2.- Inversion a medio plazo (30 segundos). Retorno 10%");
+                    System.out.println("3.- Inversion a largo plazo (60 segundos). Retorno 15%");
+                    switch(scanner.nextInt()){
+                        case 1->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 5, 10));}
+                        case 2->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 10, 30));}
+                        case 3->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 15, 60));}
+                    }
+                }
             }
         }
     }
@@ -63,11 +83,13 @@ public class CuentaDeAhorro {
         cuenta=scanner.nextInt();
         scanner.nextLine();
         System.out.println("Cuánto dinero desea agregar?");
-        int dinero=0;
-        dinero=scanner.nextInt();
+        double dinero=0;
+        dinero=scanner.nextDouble();
         scanner.nextLine();
-        banco.getList().get(opcion-1).getCuenta().get(cuenta-1).ingresarDinero(dinero);
+        banco.getList().get(opcion-1).getCuentaAhorro().ingresarDinero(dinero);
     }
+
+
     public static void RetirarDinero(Banco banco, Scanner scanner){
         Banco.ImprimirSoloCliente(banco.getList(), scanner);
         System.out.println("de que usuario desea agregar dinero?");
@@ -82,9 +104,10 @@ public class CuentaDeAhorro {
         int dinero=0;
         dinero=scanner.nextInt();
         scanner.nextLine();
-        banco.getList().get(opcion-1).getCuenta().get(cuenta-1).retirarDinero(dinero);
-    
+        banco.getList().get(opcion-1).getCuentaAhorro().retirarDinero(dinero);
     }
+
+
     public static int NumerosDeCuentaRandom(){
         Random random=new Random();
         int numero=random.nextInt(0,999999999);
