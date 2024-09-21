@@ -1,5 +1,6 @@
 package bancario;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 public class Cliente {
     static int clientesCreados=0;
@@ -10,7 +11,7 @@ public class Cliente {
     private String direccion;
     private String telefono;
     private String correo;
-    //private ArrayList<TarjetaDeCrédito> tarjetasDeCrédito;
+    private LinkedList<TarjetaDeCredito> tarjetasDeCredito;
     private CuentaDeAhorro cuentaDeAhorro;
     private CuentaDeInversion cuentaDeInversion;
 

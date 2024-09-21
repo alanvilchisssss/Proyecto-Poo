@@ -77,18 +77,26 @@ public class CuentaDeAhorro {
         System.out.println("de que usuario desea agregar dinero?");
         int opcion=0;
         opcion=scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("De que cuenta bancaria?");
-        int cuenta=0;
-        cuenta=scanner.nextInt();
-        scanner.nextLine();
         System.out.println("Cuánto dinero desea agregar?");
         double dinero=0;
         dinero=scanner.nextDouble();
-        scanner.nextLine();
         banco.getList().get(opcion-1).getCuentaAhorro().ingresarDinero(dinero);
     }
 
+    public static void obtenerRetornoDeInversion(Banco banco, Scanner scanner){
+        Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
+        System.out.println("de que usuario desea obtener el retorno de su inversion?");
+        int opcion=0;
+        opcion=scanner.nextInt();
+
+        if(banco.getList().get(opcion-1).getCuentaInversion() == null){
+            System.out.println("Error, el cliente no tiene inversion");
+            return;
+        }
+
+        banco.getList().get(opcion-1).getCuentaInversion().obtenerInversion(banco.getList().get(opcion-1).getCuentaAhorro());
+        banco.getList().get(opcion-1).setCuentaDeInversion(null); //eliminar la inversion una vez obtenida
+    }
 
     public static void RetirarDinero(Banco banco, Scanner scanner){
         Banco.ImprimirSoloCliente(banco.getList(), scanner);

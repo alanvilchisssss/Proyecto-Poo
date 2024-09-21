@@ -19,7 +19,8 @@ public class Utilerías1 {
             System.out.println("5.- Datos de clientes actuales");
             System.out.println("6.- Agregar una nueva cuenta bancaria a algún usuario.");
             System.out.println("7.- Modificar algún dato del usuario");
-            System.out.println("8.- Salir.");
+            System.out.println("8.- Obtener el retorno de la cuenta de inversion");
+            System.out.println("9.- Salir.");
             opcion = scanner.nextInt();
             scanner.nextLine();
             switch(opcion){
@@ -69,10 +70,16 @@ public class Utilerías1 {
                     }
                 }
                 case 8->{
+                    CuentaDeAhorro.obtenerRetornoDeInversion(banco, scanner);
+                }
+
+                case 9->{
                     //Salida del programa.
                     System.out.println("Salida del sistema Bancario.");
                     System.exit(0);
                 }
+
+
                 default-> System.out.println("Ingrese una opción correcta.");
             }
         }while(opcion!=8);
