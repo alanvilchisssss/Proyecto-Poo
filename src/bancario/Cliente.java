@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 public class Cliente {
     static int clientesCreados=0;
-    private int numeroDeCuenta;
     private String fechaDeNacimiento;
     private String nombre;
     private String apellido;
@@ -19,9 +18,8 @@ public class Cliente {
     //private ArrayList<bancario.CuentaDeAhorro> bancario.CuentaDeAhorro;
 
     //Constructor
-    public Cliente(int numeroDeCuenta, String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
+    public Cliente(String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
         this.cuentaDeAhorro =new CuentaDeAhorro(0);
-        this.numeroDeCuenta=numeroDeCuenta;
         this.fechaDeNacimiento=fechaDeNacimiento;
         this.nombre=nombre;
         this.apellido=apellido;
@@ -31,9 +29,9 @@ public class Cliente {
     }
     
     //Getters:
-    public int getnumeroDecuenta(){
+    /*public int getnumeroDecuenta(){
         return numeroDeCuenta;
-    }
+    }*/
     public String getfechaDeNacimiento(){
         return fechaDeNacimiento;
     }
@@ -58,13 +56,13 @@ public class Cliente {
     }
     public CuentaDeInversion getCuentaInversion(){return cuentaDeInversion;}
     //setters:
-    public void setnumeroDecuenta(int numeroDeCuenta){
+    /*public void setnumeroDecuenta(int numeroDeCuenta){
         if(numeroDeCuenta>0){
             this.numeroDeCuenta=numeroDeCuenta;
         }else{
             System.out.println("Dato no válido.");
         }
-    }
+    }*/
 
     public void setCuentaDeInversion(CuentaDeInversion cuentaDeInversion){this.cuentaDeInversion=cuentaDeInversion;}
 
@@ -94,14 +92,13 @@ public class Cliente {
         cuentaDeAhorro = cuenta;
     }
     //métodos del cliente.
-    public static Cliente CrearNuevoUsuario(int numeroDeCuenta, String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
-        Cliente cliente=new Cliente(numeroDeCuenta, fechaDeNacimiento, nombre, apellido, Direccion, telefono, correo);
+    public static Cliente CrearNuevoUsuario(String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
+        Cliente cliente=new Cliente(fechaDeNacimiento, nombre, apellido, Direccion, telefono, correo);
         clientesCreados++;
         return cliente;
     }
     public static void IngreseDeDatos(Scanner scanner,Banco banco){
         //do{
-            int num=CuentaDeAhorro.NumerosDeCuentaRandom();
             System.out.println("Ingrese la fecha de nacimiento con el siguiente formato: 15/07/2005 (dd/mm/aaaa)");
             String fecha=scanner.nextLine();
             scanner.nextLine();
@@ -122,7 +119,7 @@ public class Cliente {
             scanner.nextLine();
         //}while(num,fecha,nombres,apellidos,direccion,telefonos,correo!="");
         
-        banco.AgregarCliente(CrearNuevoUsuario(num, fecha, nombres, apellidos, direccion, telefonos, correo));
+        banco.AgregarCliente(CrearNuevoUsuario(fecha, nombres, apellidos, direccion, telefonos, correo));
         CuentaDeAhorro.TiposDeCuentas(scanner, banco.getList());
     }
     

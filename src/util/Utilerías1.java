@@ -1,6 +1,5 @@
 package util;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Hashtable;
 
@@ -100,8 +99,7 @@ public class Utilerías1 {
             String correo=scanner.nextLine();
             System.out.println("Ingrese su contraseña:");
             String Contraseña=scanner.nextLine();
-
-            if(CuentasAdministradores.get(correo).equals(Contraseña)){
+            if((CuentasAdministradores.containsKey(correo))&&(CuentasAdministradores.containsValue(Contraseña))){
                 System.out.println("Bienvenido Administrador.");
                 MenuAccesoBanco(scanner,banco);
             }else{
@@ -113,8 +111,4 @@ public class Utilerías1 {
             System.out.println("Sistema Bloqueado.");
         }
     }
-    public static LinkedList<Double> crearTarjetaDeDebito(){
-        return new LinkedList<>();
-    }
-
 }//termina utilerías

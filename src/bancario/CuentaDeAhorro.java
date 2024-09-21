@@ -1,7 +1,6 @@
 package bancario;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 public class CuentaDeAhorro {
     private double saldo = 0;
@@ -44,7 +43,11 @@ public class CuentaDeAhorro {
                 System.out.println("¿A que cliente desea asociar esta cuenta?(Ingrese un índice)");
                 Banco.ImprimirClientes(ListaCliente);
                 int index=scanner.nextInt();
-                ListaCliente.get(index-1).AgregarCuenta(cuenta);
+                if(ListaCliente.get(index-1)!=null){
+                    System.out.println("No puede tener más de una cuenta de ahorro.");
+                }else{
+                    ListaCliente.get(index-1).AgregarCuenta(cuenta);
+                }
             }
             case 2-> {
                 System.out.println("¿A que cliente desea abrirle una cuenta de inversion?(Ingrese un índice)");
@@ -104,21 +107,10 @@ public class CuentaDeAhorro {
         int opcion=0;
         opcion=scanner.nextInt();
         scanner.nextLine();
-        System.out.println("De que cuenta bancaria?");
-        int cuenta=0;
-        cuenta=scanner.nextInt();
-        scanner.nextLine();
         System.out.println("Cuánto dinero desea retirar de su cuenta?");
         int dinero=0;
         dinero=scanner.nextInt();
         scanner.nextLine();
         banco.getList().get(opcion-1).getCuentaAhorro().retirarDinero(dinero);
-    }
-
-
-    public static int NumerosDeCuentaRandom(){
-        Random random=new Random();
-        int numero=random.nextInt(0,999999999);
-        return numero;
     }
 }

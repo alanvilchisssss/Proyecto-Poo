@@ -25,7 +25,7 @@ public class Banco {
                 System.out.println("La lista de clientes está vacía");
             }else{
             for(Cliente variable: ListaCliente){
-                System.out.println("usuario "+contador+"\tnumero de cuenta: "+variable.getnumeroDecuenta()+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
+                System.out.println("Numero de cuenta: "+contador+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
                 contador++;
             }
         }
@@ -36,7 +36,7 @@ public class Banco {
             System.out.println("La lista de clientes está vacía");
         }else{
             for(Cliente variable: ListaCliente){
-                System.out.println("usuario "+contador+"\tnumero de cuenta del usuario : "+variable.getnumeroDecuenta()+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
+                System.out.println("Numero de cuenta: "+contador+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
                 contador++;
 
                 CuentaDeAhorro cuenta = variable.getCuentaAhorro();
@@ -55,7 +55,7 @@ public class Banco {
             System.out.println("Ingrese el índice del cliente que desea sus datos:");
             int index=scanner.nextInt();
             scanner.nextLine();
-            System.out.println("usuario "+index+"\tnumero de cuenta: "+ListaCliente.get(index-1).getnumeroDecuenta()+"\tFecha De Nacimiento:"+ListaCliente.get(index-1).getfechaDeNacimiento()+"\tNombre:"+ListaCliente.get(index-1).getnombre()+" "+ListaCliente.get(index-1).getapellidos()+"\t Dirección:"+ListaCliente.get(index-1).getdireccion()+"\t Telefono:"+ListaCliente.get(index-1).getelefono()+"\n Correo: "+ListaCliente.get(index-1).getcorreo());
+            System.out.println("Numero de cuenta: "+index+"\tFecha De Nacimiento:"+ListaCliente.get(index-1).getfechaDeNacimiento()+"\tNombre:"+ListaCliente.get(index-1).getnombre()+" "+ListaCliente.get(index-1).getapellidos()+"\t Dirección:"+ListaCliente.get(index-1).getdireccion()+"\t Telefono:"+ListaCliente.get(index-1).getelefono()+"\n Correo: "+ListaCliente.get(index-1).getcorreo());
             System.out.println("Cuentas de ahorro(básicas):");
 
             System.out.println("\tCuenta de ahorro: \tSaldo:"+ListaCliente.get(index-1).getCuentaAhorro().getSaldo());
