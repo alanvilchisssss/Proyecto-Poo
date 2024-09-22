@@ -77,29 +77,32 @@ public class TarjetaDeCredito {
     public static void Gastos(Banco banco,Scanner scanner){
         int i=1;
         int j=1;
-            for(int k=0; k<banco.getList().size()-1; k++){
-                if(banco.getList().get(k).getListaTarjetas().size()==0){
-                    System.out.println("No hay tarjetas de crédito disponibles.");
-                }else{
                     for(Cliente cliente:banco.getList()){
                         j=1;
-                        System.out.println("Cliente con numero de cuenta "+ i++ +" :");
-                        for(TarjetaDeCredito tarjeta:cliente.getListaTarjetas()){
-                            System.out.println("Tarjeta numero "+ j++ +" :");
-                            tarjeta.imprimirTarjeta();
+                        if(cliente.getListaTarjetas().isEmpty()){
+                            System.out.println("No hay tarjetas disponibles.");
+                            break;
+                        }else{
+                            System.out.println("Cliente con numero de cuenta "+ i++ +" :");
+                            for(TarjetaDeCredito tarjeta:cliente.getListaTarjetas()){
+                                System.out.println("Tarjeta numero "+ j++ +" :");
+                                tarjeta.imprimirTarjeta();
+                            }
                         }
-                        
                     }
+                    
                     System.out.println("Ingrese el numero de cliente:");
                     int cliente=scanner.nextInt();
                     System.out.println("Ingrese el numero de la tarjeta del cliente:");
                     int tarjeta=scanner.nextInt();
                     System.out.println("Ingrese la cantidad que gasto el cliente: ");
                     double dinero=scanner.nextDouble();
+                    if(banco.getList().get(cliente-1).getListaTarjetas().isEmpty()){
+                        System.out.println("No hay tarjetas disponibles para este usuario.");
+                    }else{
                     banco.getList().get(cliente-1).getListaTarjetas().get(tarjeta-1).setSaldoUsado(dinero);
-                }
-            }
-        }
+                    }
+                                }
     public static void SimuladorDePagoTardío(Banco banco, Scanner scanner){
         int i=1;
         int j=1;
