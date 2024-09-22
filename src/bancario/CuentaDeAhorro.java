@@ -105,8 +105,9 @@ public class CuentaDeAhorro {
             return;
         }
 
-        if(banco.getList().get(opcion-1).getCuentaInversion().obtenerInversion()==0)
+        if(banco.getList().get(opcion-1).getCuentaInversion().obtenerInversion()==0) {
             return;
+        }
 
         banco.getList().get(opcion-1).getCuentaAhorro().ingresarDinero(banco.getList().get(opcion-1).getCuentaInversion().obtenerInversion());
         banco.getList().get(opcion-1).setCuentaDeInversion(new CuentaDeInversion(0,0,0));
