@@ -56,15 +56,13 @@ public class Cliente {
     public CuentaDeAhorro getCuentaAhorro(){
         return cuentaDeAhorro;
     }
-    public CuentaDeInversion getCuentaInversion(){return cuentaDeInversion;}
+    public CuentaDeInversion getCuentaInversion(){
+        return cuentaDeInversion;
+    }
+    public LinkedList<TarjetaDeCredito> getListaTarjetas(){
+        return tarjetasDeCredito;
+    }
     //setters:
-    /*public void setnumeroDecuenta(int numeroDeCuenta){
-        if(numeroDeCuenta>0){
-            this.numeroDeCuenta=numeroDeCuenta;
-        }else{
-            System.out.println("Dato no válido.");
-        }
-    }*/
     public void setCuenta(CuentaDeAhorro cuenta){
         this.cuentaDeAhorro=cuenta;
     }
@@ -129,26 +127,23 @@ public class Cliente {
         CuentaDeAhorro.CreaciónCuentaAhorro(scanner, banco.getList());        
 
     }
-    public  void agregarCredito(TarjetaDeCredito tarjeta){
+    public void agregarCredito(TarjetaDeCredito tarjeta){
         this.tarjetasDeCredito.add(tarjeta);
      }
-     public LinkedList<TarjetaDeCredito> getLisTarjetaDeCredito(){
-         return tarjetasDeCredito;
-     }
-     public static void agregarCredito(Cliente cliente){
-         Scanner sc=new Scanner(System.in);
-         int tamaño=cliente.getLisTarjetaDeCredito().size();
+     public static void agregarCredito(Cliente cliente,Scanner scanner){
+         int tamaño=cliente.getListaTarjetas().size();
          if(tamaño<=2){
              System.out.println("Ingrese el saldo limite");
-             int saldoLimite=sc.nextInt();
+             int saldoLimite=scanner.nextInt();
+             scanner.nextLine();
              System.out.println("Ingrese la fecha de corte (cantidad de meses despues de la fecha actual)");
-             int fechaCorte=sc.nextInt();
+             int fechaCorte=scanner.nextInt();
+             scanner.nextLine();
              TarjetaDeCredito tarjeta=new TarjetaDeCredito(saldoLimite, fechaCorte);
              cliente.agregarCredito(tarjeta);
          }else{
-             System.out.println("No es posible asignarle una tarjeta de credito mas");
+             System.out.println("No es posible asignarle una tarjeta de credito extra");
          }
-         sc.close();
      }
      public void imprimirListaCredito(){
          int i=1;
