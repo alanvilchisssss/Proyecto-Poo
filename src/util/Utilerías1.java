@@ -73,7 +73,9 @@ public class Utilerías1 {
                         System.out.println("3- Ingresar dinero a la cuenta principal.");
                         System.out.println("4.- Retirar dinero de la cuenta principal.");
                         System.out.println("5.- Imprimir los registros de las inversiones.");
-                        System.out.println("6.- Salir");
+                        System.out.println("6.- Imprimir fechas de retiros de algún usuario");
+                        System.out.println("7.- Imprimir fechas de depósitos de dinero de algún usuario");
+                        System.out.println("8.- Salir");
                         case2=scanner.nextInt();
                         scanner.nextLine();
                         switch(case2){
@@ -93,13 +95,19 @@ public class Utilerías1 {
                                 Banco.ImprimirRegistrosDeLasInversiones(banco.getList());
                             }
                             case 6->{
+                                CuentaDeAhorro.FechasRetiros(banco, scanner);
+                            }
+                            case 7->{
+                                CuentaDeAhorro.FechasDepósitos(banco, scanner);
+                            }
+                            case 8->{
                                 System.out.println("...regresando al menú principal.");
                             }
                             default->{
                                 System.out.println("Error.");
                             }
                         }
-                    }while(case2!=6);
+                    }while(case2!=8);
 
                 }
                 case 3->{

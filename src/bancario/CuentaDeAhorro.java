@@ -105,6 +105,40 @@ public class CuentaDeAhorro {
                 banco.getList().get(opcion-1).getCuentaAhorro().ingresarDinero(dinero);
             }
         }
+        public static void FechasDepósitos(Banco banco, Scanner scanner){
+            Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
+            System.out.println("de que usuario desea ver los depositos anteriores?");
+            int opcion=0;
+            opcion=scanner.nextInt();
+            scanner.nextLine();
+            if(banco.getList().get(opcion-1).getFechasDeposito().isEmpty()){
+                System.out.println("El usario no ha recibido aun depositos");
+            }else{
+                System.out.println("Fechas de depositos anteriores ");
+                for(LocalDateTime fecha: banco.getList().get(opcion-1).getFechasDeposito()){
+                   System.out.println(fecha);
+                } 
+            }
+        }
+        public static void FechasRetiros(Banco banco, Scanner scanner){
+        Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
+        System.out.println("de que usuario desea ver las fehcas de retiros de dinero?");
+        int opcion=0;
+        opcion=scanner.nextInt();
+        scanner.nextLine();
+        if(opcion-1>banco.getList().size()){
+            System.out.println("El usuario no existe.");
+        }else{
+            if(banco.getList().get(opcion-1).getFechasRetiro().isEmpty()){
+                System.out.println("El usario no ha hecho aun retiros");
+            }else{
+                System.out.println("Fechas de retiros anteriores ");
+                for(LocalDateTime fecha: banco.getList().get(opcion-1).getFechasRetiro()){
+                   System.out.println(fecha);
+                } 
+            }
+        }
+    }
 
     public static void obtenerRetornoDeInversion(Banco banco, Scanner scanner){
         Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
@@ -126,7 +160,7 @@ public class CuentaDeAhorro {
 
     public static void RetirarDinero(Banco banco, Scanner scanner){
         Banco.ImprimirClienteYCuentaConAtributos(banco.getList());
-        System.out.println("de que usuario desea agregar dinero?");
+        System.out.println("de que usuario desea retirar dinero?");
         int opcion=0;
         opcion=scanner.nextInt();
         scanner.nextLine();
