@@ -99,7 +99,7 @@ public class Utilerías1 {
                                 System.out.println("Error.");
                             }
                         }
-                    }while(case2!=5);
+                    }while(case2!=6);
 
                 }
                 case 3->{

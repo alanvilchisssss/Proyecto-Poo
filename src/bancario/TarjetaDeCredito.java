@@ -10,7 +10,7 @@ public class TarjetaDeCredito {
     private final static HashSet<String> numOcupados = new HashSet<>();
     private final String numTarjeta;
     private final double saldoLimite;
-    private final int interes = 15;
+    private final float interes = 0.15f;
     private final LocalDateTime fechaDeCorte;
     private double saldoUsado;
     private double deuda;

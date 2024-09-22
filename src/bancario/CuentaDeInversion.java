@@ -1,8 +1,6 @@
 package bancario;
 
 import java.time.LocalTime;
-import java.util.LinkedList;
-import bancario.registro.*;
 
 public class CuentaDeInversion {
     private final double retornoDeInversion;

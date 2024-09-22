@@ -121,6 +121,7 @@ public class CuentaDeAhorro {
             
         banco.getList().get(opcion-1).getCuentaAhorro().ingresarDinero(banco.getList().get(opcion-1).getCuentaInversion().obtenerInversion());
         banco.getList().get(opcion-1).setCuentaDeInversion(new CuentaDeInversion(0,0,0));
+        System.out.println("Se completo exitosamente la inversión. El abono se verá reflejado en la cuenta del usuario.");
     }
 
     public static void RetirarDinero(Banco banco, Scanner scanner){
