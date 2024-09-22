@@ -1,5 +1,6 @@
 package bancario;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class CuentaDeAhorro {
@@ -87,6 +88,16 @@ public class CuentaDeAhorro {
             if(opcion-1>banco.getList().size()){
                 System.out.println("El usuario no existe.");
             }else{
+                LocalDateTime deposito= LocalDateTime.now();
+                if(banco.getList().get(opcion-1).getFechasDeposito().isEmpty()){
+                    System.out.println("El usario no ha recibido aun depositos");
+                }else{
+                    System.out.println("Fechas de depositos anteriores ");
+                    for(LocalDateTime fecha: banco.getList().get(opcion-1).getFechasDeposito()){
+                       System.out.println(fecha);
+                    } 
+                }
+                banco.getList().get(opcion-1).ultimoDeposito(deposito);
                 System.out.println("Cuánto dinero desea agregar?");
                 double dinero=0;
                 dinero=scanner.nextDouble();
@@ -120,6 +131,16 @@ public class CuentaDeAhorro {
             if(opcion-1>banco.getList().size()){
                 System.out.println("El usuario no existe.");
             }else{
+                LocalDateTime retiro= LocalDateTime.now();
+                if(banco.getList().get(opcion-1).getFechasRetiro().isEmpty()){
+                    System.out.println("El usario no ha hecho aun retiros");
+                }else{
+                    System.out.println("Fechas de retiros anteriores ");
+                    for(LocalDateTime fecha: banco.getList().get(opcion-1).getFechasRetiro()){
+                       System.out.println(fecha);
+                    } 
+                }
+            banco.getList().get(opcion-1).ultimaRetiro(retiro);
             System.out.println("Cuánto dinero desea retirar de su cuenta?");
             int dinero=0;
             dinero=scanner.nextInt();

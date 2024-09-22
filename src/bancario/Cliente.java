@@ -1,5 +1,6 @@
 package bancario;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Scanner;
 public class Cliente {
@@ -13,13 +14,11 @@ public class Cliente {
     private LinkedList<TarjetaDeCredito> tarjetasDeCredito;
     private CuentaDeAhorro cuentaDeAhorro;
     private CuentaDeInversion cuentaDeInversion;
-
-
-    //private ArrayList<bancario.CuentaDeAhorro> bancario.CuentaDeAhorro;
+    private LinkedList<LocalDateTime> fechasDeposito=new LinkedList<>();
+    private LinkedList<LocalDateTime> fechasRetiro=new LinkedList<>();
 
     //Constructor
     public Cliente(String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
-        //this.cuentaDeAhorro =cuenta;
         this.fechaDeNacimiento=fechaDeNacimiento;
         this.nombre=nombre;
         this.apellido=apellido;
@@ -29,11 +28,7 @@ public class Cliente {
         this.tarjetasDeCredito=new LinkedList<>();
         clientesCreados++;
     }
-    
     //Getters:
-    /*public int getnumeroDecuenta(){
-        return numeroDeCuenta;
-    }*/
     public String getfechaDeNacimiento(){
         return fechaDeNacimiento;
     }
@@ -62,7 +57,19 @@ public class Cliente {
     public LinkedList<TarjetaDeCredito> getListaTarjetas(){
         return tarjetasDeCredito;
     }
+    public LinkedList<LocalDateTime> getFechasDeposito(){
+        return fechasDeposito;
+     }
+     public LinkedList<LocalDateTime> getFechasRetiro(){
+        return fechasRetiro;
+     }
     //setters:
+    public void ultimoDeposito(LocalDateTime deposito){
+        this.fechasDeposito.add(deposito);
+    }
+    public void ultimaRetiro(LocalDateTime retiro ){
+        this.fechasRetiro.add(retiro);
+    }
     public void setCuenta(CuentaDeAhorro cuenta){
         this.cuentaDeAhorro=cuenta;
     }
