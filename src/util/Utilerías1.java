@@ -160,7 +160,7 @@ public class Utilerías1 {
                 existecorreo=false;
             }
 
-            if(CuentasAdministradores.get(correo).equals(Contraseña) && existecorreo){
+            if(existecorreo && CuentasAdministradores.get(correo).equals(Contraseña)){
                 System.out.println("Bienvenido Administrador.");
                 MenuAccesoBanco(scanner,banco);
             }else{
