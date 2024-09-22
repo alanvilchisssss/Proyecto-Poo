@@ -1,6 +1,6 @@
 package main;
 
-import utils.*;
+import util.Utilerías1;
 
 import java.util.Scanner;
 public class Main {

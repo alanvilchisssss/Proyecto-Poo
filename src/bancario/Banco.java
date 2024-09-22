@@ -1,7 +1,4 @@
-package banco;
-
-import banco.cliente.Cliente;
-import banco.cliente.cuentas.CuentaDeAhorro;
+package bancario;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -28,7 +25,7 @@ public class Banco {
                 System.out.println("La lista de clientes está vacía");
             }else{
             for(Cliente variable: ListaCliente){
-                System.out.println("usuario "+contador+"\tnumero de cuenta: "+variable.getnumeroDecuenta()+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
+                System.out.println("Numero de cuenta: "+contador+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
                 contador++;
             }
         }
@@ -39,32 +36,38 @@ public class Banco {
             System.out.println("La lista de clientes está vacía");
         }else{
             for(Cliente variable: ListaCliente){
-                System.out.println("usuario "+contador+"\tnumero de cuenta del usuario : "+variable.getnumeroDecuenta()+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
+                System.out.println("Numero de cuenta: "+contador+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
                 contador++;
-                for(CuentaDeAhorro cuenta: variable.getCuenta()){
-                    System.out.println("\tNumero de la cuenta de ahorro: "+cuenta.getnumeroDecuenta()+"\tSaldo:"+cuenta.getSaldo());
+
+                CuentaDeAhorro cuenta = variable.getCuentaAhorro();
+                System.out.println("\tCuenta de ahorro: \tSaldo:"+cuenta.getSaldo());
+                if(variable.getCuentaInversion() != null){
+                    System.out.println("\tCuenta de inversion: \tDinero invertido:"+variable.getCuentaInversion().getDineroInvertido());
+                    System.out.println("\tRendimiento: "+variable.getCuentaInversion().getRendimiento()+"\tPlazo de inversion: "+variable.getCuentaInversion().getPlazo());
                 }
             }
-            
         }
     }
     public static void ImprimirSoloCliente(ArrayList<Cliente> ListaCliente, Scanner scanner){
         if(ListaCliente.isEmpty()){
             System.out.println("La lista de clientes está vacía");
         }else{
-            System.out.println("Ingrese el índice del banco.cliente que desea sus datos:");
+            System.out.println("Ingrese el índice del cliente que desea sus datos:");
             int index=scanner.nextInt();
             scanner.nextLine();
-            System.out.println("usuario "+index+"\tnumero de cuenta: "+ListaCliente.get(index-1).getnumeroDecuenta()+"\tFecha De Nacimiento:"+ListaCliente.get(index-1).getfechaDeNacimiento()+"\tNombre:"+ListaCliente.get(index-1).getnombre()+" "+ListaCliente.get(index-1).getapellidos()+"\t Dirección:"+ListaCliente.get(index-1).getdireccion()+"\t Telefono:"+ListaCliente.get(index-1).getelefono()+"\n Correo: "+ListaCliente.get(index-1).getcorreo());
+            System.out.println("Numero de cuenta: "+index+"\tFecha De Nacimiento:"+ListaCliente.get(index-1).getfechaDeNacimiento()+"\tNombre:"+ListaCliente.get(index-1).getnombre()+" "+ListaCliente.get(index-1).getapellidos()+"\t Dirección:"+ListaCliente.get(index-1).getdireccion()+"\t Telefono:"+ListaCliente.get(index-1).getelefono()+"\n Correo: "+ListaCliente.get(index-1).getcorreo());
             System.out.println("Cuentas de ahorro(básicas):");
-            for(CuentaDeAhorro cuenta: ListaCliente.get(index-1).getCuenta()){
-                System.out.println("\tNumero de cuenta: "+cuenta.getnumeroDecuenta()+"\tSaldo:"+cuenta.getSaldo());
+
+            System.out.println("\tCuenta de ahorro: \tSaldo:"+ListaCliente.get(index-1).getCuentaAhorro().getSaldo());
+            if(ListaCliente.get(index-1).getCuentaInversion() != null){
+                System.out.println("\tCuenta de inversion: \tDinero invertido:"+ListaCliente.get(index-1).getCuentaInversion().getDineroInvertido());
+                System.out.println("\tRendimiento: "+ListaCliente.get(index-1).getCuentaInversion().getRendimiento()+"\tPlazo de inversion: "+ListaCliente.get(index-1).getCuentaInversion().getPlazo());
             }
         }
     }
     public static void ModificarAlgunDato(ArrayList<Cliente> ListaCliente, Scanner scanner){
         int opcion=0;
-        System.out.println("Ingrese el índice del banco.cliente que desea sus datos:");
+        System.out.println("Ingrese el índice del cliente que desea sus datos:");
         ImprimirClientes(ListaCliente);
         int index=scanner.nextInt();
         scanner.nextLine();
