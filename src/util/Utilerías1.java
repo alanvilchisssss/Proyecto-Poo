@@ -149,7 +149,8 @@ public class Utilerías1 {
         CuentasAdministradores.put("Brandon","1234");
         CuentasAdministradores.put("Profesor","Poo");
         do{
-        System.out.println("Bienvenido al Sistema Bancario "+banco.getnombre());
+            existecorreo = true;
+            System.out.println("Bienvenido al Sistema Bancario "+banco.getnombre());
             System.out.println("Ingrese su correo:");
             String correo=scanner.nextLine();
             System.out.println("Ingrese su contraseña:");
