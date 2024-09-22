@@ -68,11 +68,12 @@ public class Utilerías1 {
                     int case2=0;
                     do{
                         System.out.println("Seleccione alguna opción:");
-                        System.out.println("1.- Abrir una cuenta de inversión a algún cliente");
+                        System.out.println("1.- Abrir una cuenta de inversión a algún cliente/Realizar nueva inversion");
                         System.out.println("2.- Obtener el rendimiento de la cuenta de inversion");
                         System.out.println("3- Ingresar dinero a la cuenta principal.");
                         System.out.println("4.- Retirar dinero de la cuenta principal.");
-                        System.out.println("5.- Salir");
+                        System.out.println("5.- Imprimir los registros de las inversiones.");
+                        System.out.println("6.- Salir");
                         case2=scanner.nextInt();
                         scanner.nextLine();
                         switch(case2){
@@ -89,6 +90,9 @@ public class Utilerías1 {
                                 CuentaDeAhorro.RetirarDinero(banco, scanner);
                             }
                             case 5->{
+                                Banco.ImprimirRegistrosDeLasInversiones(banco.getList());
+                            }
+                            case 6->{
                                 System.out.println("...regresando al menú principal.");
                             }
                             default->{

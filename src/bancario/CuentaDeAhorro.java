@@ -46,8 +46,6 @@ public class CuentaDeAhorro {
                         System.out.println("El usuario no existe");
                     }else if (ListaCliente.get(index - 1).getCuentaAhorro() == null){
                         System.out.println("Error, el cliente no tiene cuenta de ahorro");
-                    }else if(ListaCliente.get(index-1).getCuentaInversion()!=null){
-                        System.out.println("No puede tener más de una cuenta de inversión en este banco.");
                     }else if(ListaCliente.get(index - 1).getCuentaAhorro().getSaldo()<saldo){
                         System.out.println("Error, el cliente no tiene fondos suficientes");
                     }
@@ -58,9 +56,12 @@ public class CuentaDeAhorro {
                         System.out.println("2.- Inversion a medio plazo (30 segundos). Retorno 10%");
                         System.out.println("3.- Inversion a largo plazo (60 segundos). Retorno 15%");
                         switch(scanner.nextInt()){
-                            case 1->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 5, 10));}
-                            case 2->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 10, 30));}
-                            case 3->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 15, 60));}
+                            case 1->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 5, 10));
+                                ListaCliente.get(index-1).nuevoRegistro(saldo, 5, 10);}
+                            case 2->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 10, 30));
+                                ListaCliente.get(index-1).nuevoRegistro(saldo, 10, 30);}
+                            case 3->{ListaCliente.get(index - 1).setCuentaDeInversion(new CuentaDeInversion(ListaCliente.get(index - 1).getCuentaAhorro().retirarDinero(saldo), 15, 60));
+                                ListaCliente.get(index-1).nuevoRegistro(saldo, 15, 60);}
                         }
                     }
                 }

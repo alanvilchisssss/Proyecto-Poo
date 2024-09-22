@@ -1,6 +1,8 @@
 package bancario;
 
 import java.time.LocalTime;
+import java.util.LinkedList;
+import bancario.registro.*;
 
 public class CuentaDeInversion {
     private final double retornoDeInversion;
@@ -15,6 +17,14 @@ public class CuentaDeInversion {
         this.saldo = saldo;
         this.rendimiento = rendimiento;
         this.retornoDeInversion = (this.rendimiento * saldo) / 100; //entre 100 porque se da el rendimiento en porcentaje
+    }
+
+    public CuentaDeInversion(double saldo, int rendimiento, int plazo, boolean registro){
+        this.plazo = plazo;
+        this.fechaDeSalida = LocalTime.now().plusSeconds(plazo);
+        this.saldo = saldo;
+        this.rendimiento = rendimiento;
+        this.retornoDeInversion = (this.rendimiento * saldo) / 100;
     }
 
     //getters
@@ -39,4 +49,7 @@ public class CuentaDeInversion {
         return 0;
     }
 
+
+
 }
+

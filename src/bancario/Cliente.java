@@ -1,6 +1,9 @@
 package bancario;
 
+import bancario.registro.RegistroInversion;
+
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Scanner;
 public class Cliente {
@@ -16,6 +19,8 @@ public class Cliente {
     private CuentaDeInversion cuentaDeInversion;
     private LinkedList<LocalDateTime> fechasDeposito=new LinkedList<>();
     private LinkedList<LocalDateTime> fechasRetiro=new LinkedList<>();
+    private LinkedList<RegistroInversion> registros = new LinkedList<>();
+
 
     //Constructor
     public Cliente(String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
@@ -159,6 +164,21 @@ public class Cliente {
              tarjeta.imprimirTarjeta();
          }
      }
-    
+
+    public void nuevoRegistro(double saldo, int rendimiento, int plazo) {
+        this.registros.add(new RegistroInversion(LocalTime.now(), new CuentaDeInversion(saldo, rendimiento, plazo, true)));
+    }
+
+    public void imprimirRegistros() {
+        int inversion = 1;
+        for(RegistroInversion r : this.registros){
+            System.out.println("Inversion: " + inversion);
+            System.out.println("Fecha de la inversión: "+r.fechaDeInversion().toString());
+            System.out.println("Datos de la inversión: "+"\t Dinero invertido "+r.datos().getDineroInvertido()+"$");
+            System.out.println("\tRendimiento: "+r.datos().getRendimiento()+"\tPlazo de inversion: "+r.datos().getPlazo());
+            inversion++;
+        }
+    }
+
 }
 

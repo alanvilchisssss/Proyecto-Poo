@@ -48,6 +48,30 @@ public class Banco {
             }
         }
     }
+
+    public static void ImprimirRegistrosDeLasInversiones(ArrayList<Cliente> ListaCliente){
+        int contador=1;
+        if(ListaCliente.isEmpty()){
+            System.out.println("La lista de clientes está vacía");
+        }else{
+            for(Cliente variable: ListaCliente){
+                System.out.println("Numero de cuenta: "+contador+"\tFecha De Nacimiento:"+variable.getfechaDeNacimiento()+"\tNombre:"+variable.getnombre()+" "+variable.getapellidos()+"\t Dirección:"+variable.getdireccion()+"\t Telefono:"+variable.getelefono()+"\n Correo: "+variable.getcorreo());
+                contador++;
+
+                if(variable.getCuentaInversion() != null){
+                    variable.imprimirRegistros();
+                    System.out.println();
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
     public static void ImprimirSoloCliente(ArrayList<Cliente> ListaCliente, Scanner scanner){
         if(ListaCliente.isEmpty()){
             System.out.println("La lista de clientes está vacía");
