@@ -10,7 +10,7 @@ public class Cliente {
     private String direccion;
     private String telefono;
     private String correo;
-    private LinkedList<TarjetaDeCredito> tarjetasDeCredito=new LinkedList<>();
+    private LinkedList<TarjetaDeCredito> tarjetasDeCredito;
     private CuentaDeAhorro cuentaDeAhorro;
     private CuentaDeInversion cuentaDeInversion;
 
@@ -26,16 +26,8 @@ public class Cliente {
         this.direccion=Direccion;
         this.telefono=telefono;
         this.correo=correo;
+        this.tarjetasDeCredito=new LinkedList<>();
         clientesCreados++;
-    }
-    public Cliente(CuentaDeAhorro cuenta,String fechaDeNacimiento, String nombre, String apellido, String Direccion, String telefono, String correo){
-        this.cuentaDeAhorro =cuenta;
-        this.fechaDeNacimiento=fechaDeNacimiento;
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.direccion=Direccion;
-        this.telefono=telefono;
-        this.correo=correo;
     }
     
     //Getters:

@@ -1,7 +1,7 @@
 package bancario;
 
 import util.RandNum;
-
+import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
@@ -67,7 +67,49 @@ public class TarjetaDeCredito {
         System.out.println("La fecha de corte es: " +this.fechaDeCorte);
         System.out.println("Su saldo Usado hasta ahora es: "+deuda);
     }
-
-
+    public static void AgregarTarjeta(Banco banco, Scanner scanner){
+        System.out.println("Ingrese el cliente al que le dara la Tarjeta de credito");
+        Banco.ImprimirClientes(banco.getList());
+        int cliente=scanner.nextInt();
+        Cliente.agregarCredito(banco.getList().get(cliente-1)); 
+    }
+    public static void Gastos(Banco banco,Scanner scanner){
+        int i=1;
+        int j=1;
+        for(Cliente cliente:banco.getList()){
+            j=1;
+            System.out.println("Cliente con numero de cuenta "+ i++ +" :");
+            for(TarjetaDeCredito tarjeta:cliente.getLisTarjetaDeCredito()){
+                System.out.println("Tarjeta numero "+ j++ +" :");
+                tarjeta.imprimirTarjeta();
+            }
+        }
+        System.out.println("Ingrese el numero de cliente:");
+        int cliente=scanner.nextInt();
+        System.out.println("Ingrese el numero de la tarjeta del cliente:");
+        int tarjeta=scanner.nextInt();
+        System.out.println("Ingrese la cantidad que gasto el cliente: ");
+        double dinero=scanner.nextDouble();
+        banco.getList().get(cliente-1).getLisTarjetaDeCredito().get(tarjeta-1).setSaldoUsado(dinero);    }
+    public static void SimuladorDePagoTardío(Banco banco, Scanner scanner){
+        int i=1;
+        int j=1;
+        for(Cliente cliente:banco.getList()){
+            j=1;
+            System.out.println("Cliente con numero de cuenta "+ i++ +" :");
+            for(TarjetaDeCredito tarjeta:cliente.getLisTarjetaDeCredito()){
+                System.out.println("Tarjeta numero  "+ j++ +" :");
+                tarjeta.imprimirTarjeta();
+            }
+        }
+        System.out.println("Ingrese el numero de cliente:");
+        int cliente=scanner.nextInt();
+        System.out.println("Ingrese el numero de la tarjeta que  el cliente no ha pagdo:");
+        int tarjeta=scanner.nextInt();
+        System.out.println("Ingrese los dias de retraso:");
+        int retraso=scanner.nextInt();
+        banco.getList().get(cliente-1).getLisTarjetaDeCredito().get(tarjeta-1).pagoTardio(retraso);
+        System.out.println("Nos debe actualmente: "+ banco.getList().get(cliente-1).getLisTarjetaDeCredito().get(tarjeta-1).getDeuda());
+        }
 
 }
