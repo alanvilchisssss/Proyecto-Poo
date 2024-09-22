@@ -142,23 +142,30 @@ public class Utilerías1 {
     public static void InicioSesión(Scanner scanner){
         Banco banco=new Banco();
         int contador=0;
+        boolean existecorreo = true;
         Hashtable<String,String> CuentasAdministradores=new Hashtable<String, String>();
         CuentasAdministradores.put("alanvilchis","1");
         CuentasAdministradores.put("alexander","69");
         CuentasAdministradores.put("Brandon","1234");
         CuentasAdministradores.put("Profesor","Poo");
         do{
-        System.out.println("Bienvenido al Sistema Bancario "+banco.getnombre());
+            existecorreo = true;
+            System.out.println("Bienvenido al Sistema Bancario "+banco.getnombre());
             System.out.println("Ingrese su correo:");
             String correo=scanner.nextLine();
             System.out.println("Ingrese su contraseña:");
             String Contraseña=scanner.nextLine();
 
-            if(CuentasAdministradores.get(correo).equals(Contraseña)){
+            if(!CuentasAdministradores.containsKey(correo)){
+                System.out.println("El correo no existe");
+                existecorreo=false;
+            }
+
+            if(existecorreo && CuentasAdministradores.get(correo).equals(Contraseña)){
                 System.out.println("Bienvenido Administrador.");
                 MenuAccesoBanco(scanner,banco);
             }else{
-                System.out.println("Cuenta incorrecta");
+                System.out.println("Correo o contraseña incorrecta");
                 contador++;
             }
         }while(contador<4);
