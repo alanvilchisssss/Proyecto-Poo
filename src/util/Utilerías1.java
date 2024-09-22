@@ -118,6 +118,9 @@ public class Utilerías1 {
                             case 3->{
                                 TarjetaDeCredito.SimuladorDePagoTardío(banco, scanner);
                             }
+                            case 4->{
+                                System.out.println("...Saliendo");
+                            }
                             default->System.out.println("Error");
                         }
                     }while(case3!=4);

@@ -71,33 +71,42 @@ public class TarjetaDeCredito {
         System.out.println("Ingrese el cliente al que le dara la Tarjeta de credito");
         Banco.ImprimirClientes(banco.getList());
         int cliente=scanner.nextInt();
-        Cliente.agregarCredito(banco.getList().get(cliente-1)); 
+        scanner.nextLine();
+        Cliente.agregarCredito(banco.getList().get(cliente-1),scanner); 
     }
     public static void Gastos(Banco banco,Scanner scanner){
         int i=1;
         int j=1;
-        for(Cliente cliente:banco.getList()){
-            j=1;
-            System.out.println("Cliente con numero de cuenta "+ i++ +" :");
-            for(TarjetaDeCredito tarjeta:cliente.getLisTarjetaDeCredito()){
-                System.out.println("Tarjeta numero "+ j++ +" :");
-                tarjeta.imprimirTarjeta();
+            for(int k=0; k<banco.getList().size()-1; k++){
+                if(banco.getList().get(k).getListaTarjetas().size()==0){
+                    System.out.println("No hay tarjetas de crédito disponibles.");
+                }else{
+                    for(Cliente cliente:banco.getList()){
+                        j=1;
+                        System.out.println("Cliente con numero de cuenta "+ i++ +" :");
+                        for(TarjetaDeCredito tarjeta:cliente.getListaTarjetas()){
+                            System.out.println("Tarjeta numero "+ j++ +" :");
+                            tarjeta.imprimirTarjeta();
+                        }
+                        
+                    }
+                    System.out.println("Ingrese el numero de cliente:");
+                    int cliente=scanner.nextInt();
+                    System.out.println("Ingrese el numero de la tarjeta del cliente:");
+                    int tarjeta=scanner.nextInt();
+                    System.out.println("Ingrese la cantidad que gasto el cliente: ");
+                    double dinero=scanner.nextDouble();
+                    banco.getList().get(cliente-1).getListaTarjetas().get(tarjeta-1).setSaldoUsado(dinero);
+                }
             }
         }
-        System.out.println("Ingrese el numero de cliente:");
-        int cliente=scanner.nextInt();
-        System.out.println("Ingrese el numero de la tarjeta del cliente:");
-        int tarjeta=scanner.nextInt();
-        System.out.println("Ingrese la cantidad que gasto el cliente: ");
-        double dinero=scanner.nextDouble();
-        banco.getList().get(cliente-1).getLisTarjetaDeCredito().get(tarjeta-1).setSaldoUsado(dinero);    }
     public static void SimuladorDePagoTardío(Banco banco, Scanner scanner){
         int i=1;
         int j=1;
         for(Cliente cliente:banco.getList()){
             j=1;
             System.out.println("Cliente con numero de cuenta "+ i++ +" :");
-            for(TarjetaDeCredito tarjeta:cliente.getLisTarjetaDeCredito()){
+            for(TarjetaDeCredito tarjeta:cliente.getListaTarjetas()){
                 System.out.println("Tarjeta numero  "+ j++ +" :");
                 tarjeta.imprimirTarjeta();
             }
@@ -108,8 +117,8 @@ public class TarjetaDeCredito {
         int tarjeta=scanner.nextInt();
         System.out.println("Ingrese los dias de retraso:");
         int retraso=scanner.nextInt();
-        banco.getList().get(cliente-1).getLisTarjetaDeCredito().get(tarjeta-1).pagoTardio(retraso);
-        System.out.println("Nos debe actualmente: "+ banco.getList().get(cliente-1).getLisTarjetaDeCredito().get(tarjeta-1).getDeuda());
+        banco.getList().get(cliente-1).getListaTarjetas().get(tarjeta-1).pagoTardio(retraso);
+        System.out.println("Nos debe actualmente: "+ banco.getList().get(cliente-1).getListaTarjetas().get(tarjeta-1).getDeuda());
         }
 
 }
