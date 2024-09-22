@@ -68,7 +68,7 @@ public class Utilerías1 {
                     int case2=0;
                     do{
                         System.out.println("Seleccione alguna opción:");
-                        System.out.println("1.- Agregar una nueva cuenta de ahorro a algún usuario.");
+                        System.out.println("1.- Abrir una cuenta de inversión a algún cliente");
                         System.out.println("2.- Obtener el rendimiento de la cuenta de inversion");
                         System.out.println("3- Ingresar dinero a la cuenta principal.");
                         System.out.println("4.- Retirar dinero de la cuenta principal.");
@@ -149,7 +149,8 @@ public class Utilerías1 {
             String correo=scanner.nextLine();
             System.out.println("Ingrese su contraseña:");
             String Contraseña=scanner.nextLine();
-            if((CuentasAdministradores.containsKey(correo))&&(CuentasAdministradores.containsValue(Contraseña))){
+
+            if(CuentasAdministradores.get(correo).equals(Contraseña)){
                 System.out.println("Bienvenido Administrador.");
                 MenuAccesoBanco(scanner,banco);
             }else{
